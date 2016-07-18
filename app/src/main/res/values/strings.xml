@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">JapGoods</string>
+    <string name="clothes">clothes</string>
+    <string name="foods">foods</string>
+    <string name="reside">reside</string>
+    <string name="cars">cars</string>
+</resources>
