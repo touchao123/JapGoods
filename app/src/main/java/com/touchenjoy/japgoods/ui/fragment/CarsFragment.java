@@ -87,6 +87,8 @@ public class CarsFragment extends BaseFragment {
                     ce.setLogo(tm.getLogo());
                     ce.setShort_name(tm.getShort_name());
                     ce.setUrl(tm.getUrl());
+                    Log.d(TAG,"Url:"+tm.getLogo_img().getUrl());
+                    ce.setLogo_url(tm.getLogo_img().getUrl());
                     carsLists.add(ce);
 
                 }

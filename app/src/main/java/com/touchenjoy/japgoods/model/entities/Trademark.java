@@ -1,6 +1,7 @@
 package com.touchenjoy.japgoods.model.entities;
 
 import cn.bmob.v3.BmobObject;
+import cn.bmob.v3.datatype.BmobFile;
 
 /**
  * Created by Administrator on 2016/7/24.
@@ -52,5 +53,15 @@ public class Trademark extends BmobObject {
     private String logo;
     private String url;
     private String category;
+
+    public BmobFile getLogo_img() {
+        return logo_img;
+    }
+
+    public void setLogo_img(BmobFile logo_img) {
+        this.logo_img = logo_img;
+    }
+
+    private BmobFile logo_img;
 
 }

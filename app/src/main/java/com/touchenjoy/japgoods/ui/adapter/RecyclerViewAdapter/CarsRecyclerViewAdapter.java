@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.nostra13.universalimageloader.core.ImageLoader;
 import com.touchenjoy.japgoods.R;
 import com.touchenjoy.japgoods.model.entities.CarsEntity;
 
@@ -47,6 +48,10 @@ public class CarsRecyclerViewAdapter extends RecyclerView.Adapter<CarsRecyclerVi
 //        holder.textViewCom.setText("Sony");
 //        holder.textViewDomain.setText("http://www.jap.com");
         holder.textViewCom.setText(carsLists.get(position).getName().toString());
+
+        String imageUrl = carsLists.get(position).getLogo_url();
+        ImageLoader.getInstance().displayImage(imageUrl, holder.right_logo_image);
+
 
     }
 

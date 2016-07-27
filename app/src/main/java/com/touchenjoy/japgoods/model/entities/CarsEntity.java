@@ -10,6 +10,16 @@ public class CarsEntity {
     private String url;
     private String category;
 
+    public String getLogo_url() {
+        return logo_url;
+    }
+
+    public void setLogo_url(String logo_url) {
+        this.logo_url = logo_url;
+    }
+
+    private String logo_url;
+
     public String getName() {
         return name;
     }
