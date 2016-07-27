@@ -10,14 +10,19 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.touchenjoy.japgoods.R;
+import com.touchenjoy.japgoods.model.entities.CarsEntity;
 import com.touchenjoy.japgoods.model.entities.Trademark;
 import com.touchenjoy.japgoods.ui.adapter.RecyclerViewAdapter.CarsRecyclerViewAdapter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.CountListener;
+import cn.bmob.v3.listener.FindListener;
 
 /**
  * Created by Administrator on 2016/7/18.
@@ -30,6 +35,7 @@ public class CarsFragment extends BaseFragment {
     @Bind(R.id.swipeRefreshLayout)
     SwipeRefreshLayout swipeRefreshLayout;
 
+    final String TAG="CarsFragment";
     CarsRecyclerViewAdapter carsRecyclerViewAdapter;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -42,23 +48,65 @@ public class CarsFragment extends BaseFragment {
 
         initViews(view );
 
-        setAdpater();
+//        setAdpater();
+
+        onFresh();
 
         return view;
     }
 
     private void initViews(View view){
 
-        countObjects();
+//        countObjects();
     }
 
     private void setAdpater(){
 
-        carsRecyclerViewAdapter= new CarsRecyclerViewAdapter(getActivity());
+        ArrayList<CarsEntity> carsLists = new ArrayList<CarsEntity>();
+
+        carsRecyclerViewAdapter= new CarsRecyclerViewAdapter(getActivity(),carsLists);
         recyclerView.setAdapter(carsRecyclerViewAdapter);
     }
 
+
+    public void onFresh(){
+        Log.i("tc","enter count...");
+        BmobQuery<Trademark> bmobQuery = new BmobQuery<Trademark>();
+        bmobQuery.addWhereEqualTo("category","汽车");
+        bmobQuery.setLimit(50);
+        bmobQuery.findObjects(getActivity(), new FindListener<Trademark>() {
+            @Override
+            public void onSuccess(List<Trademark> list) {
+//                Log.d(TAG,"category=汽车 "+list.size());
+//                Log.d(TAG, "onSuccess: first one: "+list.get(0).getName());
+                ArrayList<CarsEntity> carsLists= new ArrayList<CarsEntity>();
+                for (Trademark tm:list){
+                    CarsEntity ce = new CarsEntity();
+                    ce.setName(tm.getName());
+                    ce.setCategory(tm.getCategory());
+                    ce.setLogo(tm.getLogo());
+                    ce.setShort_name(tm.getShort_name());
+                    ce.setUrl(tm.getUrl());
+                    carsLists.add(ce);
+
+                }
+
+                carsRecyclerViewAdapter= new CarsRecyclerViewAdapter(getActivity(),carsLists);
+                recyclerView.setAdapter(carsRecyclerViewAdapter);
+
+
+            }
+
+            @Override
+            public void onError(int i, String s) {
+
+            }
+        });
+
+    }
+
     public void countObjects(){
+        Log.i("tc","enter count...");
         BmobQuery<Trademark> bmobQuery = new BmobQuery<Trademark>();
         bmobQuery.count(getActivity(),Trademark.class, new CountListener(){
 
@@ -73,5 +121,7 @@ public class CarsFragment extends BaseFragment {
                 Log.d("tc",s);
             }
         });
+
+
     }
 }

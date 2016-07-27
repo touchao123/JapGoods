@@ -5,9 +5,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.touchenjoy.japgoods.R;
+import com.touchenjoy.japgoods.model.entities.CarsEntity;
+
+import java.util.ArrayList;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -17,10 +21,18 @@ import butterknife.ButterKnife;
  */
 public class CarsRecyclerViewAdapter extends RecyclerView.Adapter<CarsRecyclerViewAdapter.CarsViewHolder> {
     private final LayoutInflater mLayoutInflater;
+    ArrayList<CarsEntity> carsLists;
 
-    public CarsRecyclerViewAdapter(Context context){
+//    public CarsRecyclerViewAdapter(Context context){
+//        super();
+//        mLayoutInflater = LayoutInflater.from(context);
+//    }
+
+    public  CarsRecyclerViewAdapter(Context context, ArrayList<CarsEntity> carsLists){
         super();
-        mLayoutInflater = LayoutInflater.from(context);
+        mLayoutInflater=LayoutInflater.from(context);
+        this.carsLists=carsLists;
+
     }
 
     @Override
@@ -30,27 +42,29 @@ public class CarsRecyclerViewAdapter extends RecyclerView.Adapter<CarsRecyclerVi
 
     @Override
     public void onBindViewHolder(CarsViewHolder holder, int position) {
+//
+//        holder.textViewPro.setText("Jap");
+//        holder.textViewCom.setText("Sony");
+//        holder.textViewDomain.setText("http://www.jap.com");
+        holder.textViewCom.setText(carsLists.get(position).getName().toString());
 
-        holder.textViewPro.setText("Jap");
-        holder.textViewCom.setText("Sony");
-        holder.textViewDomain.setText("http://www.jap.com");
     }
 
     @Override
     public int getItemCount() {
-        return 4;
+        return carsLists.size();
     }
 
     public static class CarsViewHolder extends RecyclerView.ViewHolder {
-        @Bind(R.id.textViewPro)
-        TextView textViewPro;
-
 
         @Bind(R.id.textViewDomain)
         TextView textViewDomain;
 
         @Bind(R.id.textViewCom)
         TextView textViewCom;
+
+        @Bind(R.id.right_logo_image)
+        ImageView right_logo_image;
 
         public CarsViewHolder(View itemView) {
             super(itemView);

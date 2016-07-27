@@ -4,40 +4,6 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="60dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Productions"
-                android:textSize="30dip"
-                android:id="@+id/textViewPro" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="http://www.url.com"
-                android:id="@+id/textViewDomain" />
-
-        </LinearLayout>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="80dp"
-            android:layout_marginTop="20dp"
-            android:textSize="25dp"
-            android:text="Company"
-            android:id="@+id/textViewCom" />
-
-    </LinearLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -63,8 +29,24 @@
                 android:layout_height="wrap_content"
                 android:paddingRight="7.0dip" >
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginTop="10dp"
+                    android:textSize="25dp"
+                    android:text="Company"
+                    android:id="@+id/textViewCom" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="http://www.url.com"
+                    android:layout_marginLeft="2dp"
+                    android:layout_below="@+id/textViewCom"
+                    android:id="@+id/textViewDomain" />
+
                 <ImageView
-                    android:id="@+id/right_image"
+                    android:id="@+id/right_logo_image"
                     android:layout_width="@dimen/right_image_width"
                     android:layout_height="@dimen/right_image_height"
                     android:layout_alignParentRight="true"
@@ -88,7 +70,7 @@
                     style="@style/item_title"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_toLeftOf="@id/right_image" />
+                    android:layout_toLeftOf="@id/right_logo_image" />
             </RelativeLayout>
 
             <LinearLayout
@@ -171,6 +153,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="4.0dip"
             android:layout_marginRight="7.0dip"
+            android:text="@string/tm_text_info"
             android:lineSpacingExtra="4.0dip" />
 
         <LinearLayout

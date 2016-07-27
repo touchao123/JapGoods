@@ -78,11 +78,11 @@
     <dimen name="ss_share_dialog_pos_y">28.0dip</dimen>
     <dimen name="head_size">28.0dip</dimen>
     <dimen name="item_image_width">86.0dip</dimen>
-    <dimen name="item_image_height">60.0dip</dimen>
+    <dimen name="item_image_height">86.0dip</dimen>
     <dimen name="item_image_total_padding">60.0dip</dimen>
     <dimen name="item_image_max_width">180.0dip</dimen>
-    <dimen name="right_image_width">86.0dip</dimen>
-    <dimen name="right_image_height">60.0dip</dimen>
+    <dimen name="right_image_width">100.0dip</dimen>
+    <dimen name="right_image_height">100.0dip</dimen>
     <dimen name="item_ad_total_padding">45.0dip</dimen>
     <dimen name="essay_image_item_total_padding">32.0dip</dimen>
     <dimen name="splash_avatar_size">68.0dip</dimen>
