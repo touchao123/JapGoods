@@ -1,5 +1,6 @@
 package com.touchenjoy.japgoods.ui.activity;
 
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -12,7 +13,11 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
 
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
 import com.touchenjoy.japgoods.R;
 import com.touchenjoy.japgoods.ui.fragment.CarsFragment;
 import com.touchenjoy.japgoods.ui.fragment.ClothesFragment;
@@ -96,6 +101,21 @@ public class MainActivity extends AppCompatActivity {
 
         setSupportActionBar(toolBar);
         toolBar.setNavigationIcon(R.drawable.icon_new);
+        toolBar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Log.d(TAG,"navigation pressed");
+                IntentIntegrator integrator = new IntentIntegrator(MainActivity.this);
+//                integrator.setDesiredBarcodeFormats(IntentIntegrator.ONE_D_CODE_TYPES);
+                integrator.setPrompt("对准二维码");
+                integrator.setCameraId(0);  // Use a specific camera of the device
+                integrator.setBeepEnabled(false);
+                integrator.setBarcodeImageEnabled(true);
+                integrator.setOrientationLocked(false);
+                integrator.initiateScan();
+
+            }
+        });
         toolBar.setOnMenuItemClickListener(onMenuItemClick);
 
     }
@@ -121,6 +141,21 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
     };
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+        if(result != null) {
+            if(result.getContents() == null) {
+                Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show();
+            } else {
+                Toast.makeText(this, "Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
+            }
+        } else {
+            super.onActivityResult(requestCode, resultCode, data);
+        }
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

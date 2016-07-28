@@ -29,7 +29,10 @@ dependencies {
 
     //3.4.7-aar：具务必查看下面注释[1]
     compile 'cn.bmob.android:bmob-sdk:3.4.7-aar'
-
+    //universal image loader
     compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
+    //zxing 二维码
+    compile 'com.journeyapps:zxing-android-embedded:3.3.0@aar'
+    compile 'com.google.zxing:core:3.2.1'
 
 }

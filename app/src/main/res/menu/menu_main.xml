@@ -19,7 +19,7 @@
         android:title="@string/action_edit"
         android:orderInCategory="90"
         android:icon="@drawable/btn_share"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="never" />
 
   <item android:id="@+id/action_settings"
         android:title="@string/action_settings"
