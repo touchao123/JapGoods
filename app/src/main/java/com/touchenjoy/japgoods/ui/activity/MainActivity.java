@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
 //        toolBar.setLogo(R.drawable.btn_common);
 
         setSupportActionBar(toolBar);
-        toolBar.setNavigationIcon(R.drawable.icon_new);
+        toolBar.setNavigationIcon(R.drawable.ic_crop_free_white_36dp);
         toolBar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
