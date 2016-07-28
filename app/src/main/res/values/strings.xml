@@ -7,4 +7,6 @@
     <string name="tm_text_info">英菲尼迪是日产的高级汽车品牌。1989年11月8日在北美首先开始销售，现已经遍及15个国家。 维基百科</string>
     <string name="action_edit">edit</string>
     <string name="action_settings">settings</string>
+    <string name="search_title">search</string>
+    <string name="search_hint">goods</string>
 </resources>
