@@ -7,6 +7,9 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.touchenjoy.japgoods.R;
 import com.touchenjoy.japgoods.ui.fragment.CarsFragment;
@@ -20,6 +23,7 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
 
+    final  String TAG="MainActivity";
     @Bind(android.R.id.tabs)
     TabLayout tabLayout;
 
@@ -83,5 +87,42 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         tabLayout.setupWithViewPager(viewPager);
+
+        toolBar.setTitle("JapGoods");
+        toolBar.setSubtitle("search Goods");
+//        toolBar.setLogo(R.drawable.btn_common);
+
+        setSupportActionBar(toolBar);
+        toolBar.setNavigationIcon(R.drawable.icon_new);
+        toolBar.setOnMenuItemClickListener(onMenuItemClick);
+
+    }
+
+    private Toolbar.OnMenuItemClickListener onMenuItemClick = new Toolbar.OnMenuItemClickListener() {
+
+        @Override
+        public boolean onMenuItemClick(MenuItem item) {
+            switch (item.getItemId()) {
+                case R.id.action_edit:
+                    Log.i(TAG,"edit");
+                    break;
+                case R.id.action_settings:
+                    Log.i(TAG,"settings");
+                    break;
+                case R.id.action_share:
+                    Log.i(TAG,"action_share");
+                    break;
+                default:
+                    break;
+
+            }
+            return true;
+        }
+    };
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return  true;
     }
 }
