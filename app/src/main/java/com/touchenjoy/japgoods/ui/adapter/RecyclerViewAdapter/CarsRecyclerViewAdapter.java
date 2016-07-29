@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -47,9 +48,11 @@ public class CarsRecyclerViewAdapter extends RecyclerView.Adapter<CarsRecyclerVi
 //        holder.textViewPro.setText("Jap");
 //        holder.textViewCom.setText("Sony");
 //        holder.textViewDomain.setText("http://www.jap.com");
-        holder.textViewCom.setText(carsLists.get(position).getName().toString());
-
-        String imageUrl = carsLists.get(position).getLogo_url();
+        CarsEntity ce = carsLists.get(position);
+        holder.textViewCom.setText(ce.getName().toString());
+        holder.textViewDomain.setText(ce.getUrl());
+        holder.item_image_layout.setVisibility(View.GONE);
+        String imageUrl = ce.getLogo_url();
         ImageLoader.getInstance().displayImage(imageUrl, holder.right_logo_image);
 
 
@@ -70,6 +73,9 @@ public class CarsRecyclerViewAdapter extends RecyclerView.Adapter<CarsRecyclerVi
 
         @Bind(R.id.right_logo_image)
         ImageView right_logo_image;
+
+        @Bind(R.id.item_image_layout)
+        LinearLayout item_image_layout;
 
         public CarsViewHolder(View itemView) {
             super(itemView);
