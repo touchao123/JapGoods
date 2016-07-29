@@ -48,8 +48,6 @@ public class CarsFragment extends BaseFragment {
 
         initViews(view );
 
-//        setAdpater();
-
         onFresh();
 
         return view;

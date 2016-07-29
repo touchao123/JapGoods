@@ -1,6 +1,9 @@
 package com.touchenjoy.japgoods.ui.activity;
 
 import android.content.Intent;
+import android.support.annotation.IdRes;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -18,6 +21,8 @@ import android.widget.Toast;
 
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
+import com.roughike.bottombar.BottomBar;
+import com.roughike.bottombar.OnMenuTabClickListener;
 import com.touchenjoy.japgoods.R;
 import com.touchenjoy.japgoods.ui.fragment.CarsFragment;
 import com.touchenjoy.japgoods.ui.fragment.ClothesFragment;
@@ -31,6 +36,12 @@ import butterknife.ButterKnife;
 public class MainActivity extends AppCompatActivity {
 
     final  String TAG="MainActivity";
+    private BottomBar mBottomBar;
+
+    @Bind(R.id.main_coordinator_activity)
+    CoordinatorLayout coordinatorLayout;
+
+
     @Bind(android.R.id.tabs)
     TabLayout tabLayout;
 
@@ -47,10 +58,43 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         initViews();
+
+
+        //bottom navigator bar
+        mBottomBar = BottomBar.attach(this, savedInstanceState);
+        mBottomBar.setItems(R.menu.bottombar_menu);
+        mBottomBar.setOnMenuTabClickListener(new OnMenuTabClickListener() {
+            @Override
+            public void onMenuTabSelected(@IdRes int menuItemId) {
+
+                switch (menuItemId){
+                    case R.id.bottomBarItemOne:
+                        Snackbar.make(coordinatorLayout, "bottomBarItemOne", 300).show();
+                        break;
+                    case R.id.bottomBarItemTwo:
+                        Snackbar.make(coordinatorLayout, "bottomBarItemTwo", 300).show();
+                        break;
+                    case R.id.bottomBarItemThree:
+                        Snackbar.make(coordinatorLayout, "bottomBarItemThree", 300).show();
+                        break;
+                }
+
+            }
+
+            @Override
+            public void onMenuTabReSelected(@IdRes int menuItemId) {
+                switch (menuItemId){
+                    case R.id.bottomBarItemOne:
+                        break;
+                }
+            }
+        });
+
     }
 
     private void initViews(){
 
+        //Header status bar
         setSupportActionBar(toolBar);
         viewPager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
             @Override
@@ -99,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
         toolBar.setSubtitle("search Goods");
 //        toolBar.setLogo(R.drawable.btn_common);
 
-        setSupportActionBar(toolBar);
+//        setSupportActionBar(toolBar);
         toolBar.setNavigationIcon(R.drawable.ic_crop_free_white_36dp);
         toolBar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -117,6 +161,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         toolBar.setOnMenuItemClickListener(onMenuItemClick);
+
 
     }
 
@@ -156,6 +201,15 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        // Necessary to restore the BottomBar's state, otherwise we would
+        // lose the current tab on orientation change.
+        mBottomBar.onSaveInstanceState(outState);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

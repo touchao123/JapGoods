@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/bottomBarItemOne"
+        android:icon="@drawable/ic_crop_free_black_36dp"
+        android:title="One" />
+
+    <item
+        android:id="@+id/bottomBarItemTwo"
+        android:icon="@drawable/ic_crop_free_black_36dp"
+        android:title="Two" />
+
+    <item
+        android:id="@+id/bottomBarItemThree"
+        android:icon="@drawable/ic_crop_free_black_36dp"
+        android:title="Three" />
+</menu>
