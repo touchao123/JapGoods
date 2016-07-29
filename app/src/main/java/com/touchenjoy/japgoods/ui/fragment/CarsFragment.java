@@ -10,8 +10,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.touchenjoy.japgoods.R;
+import com.touchenjoy.japgoods.model.entities.BaseEntity;
 import com.touchenjoy.japgoods.model.entities.CarsEntity;
 import com.touchenjoy.japgoods.model.entities.Trademark;
+import com.touchenjoy.japgoods.ui.adapter.RecyclerViewAdapter.BaseRecyclerViewAdapter;
 import com.touchenjoy.japgoods.ui.adapter.RecyclerViewAdapter.CarsRecyclerViewAdapter;
 
 import java.util.ArrayList;
@@ -29,43 +31,6 @@ import cn.bmob.v3.listener.FindListener;
  */
 public class CarsFragment extends BaseFragment {
 
-    @Bind(R.id.recyclerView)
-    RecyclerView recyclerView;
-
-    @Bind(R.id.swipeRefreshLayout)
-    SwipeRefreshLayout swipeRefreshLayout;
-
-    final String TAG="CarsFragment";
-    CarsRecyclerViewAdapter carsRecyclerViewAdapter;
-
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_cars, container, false);
-        ButterKnife.bind(this, view);
-
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-//        recyclerView.setAdapter(new StockListViewAdapter(getActivity()));
-        swipeRefreshLayout.setEnabled(false);
-
-        initViews(view );
-
-        onFresh();
-
-        return view;
-    }
-
-    private void initViews(View view){
-
-//        countObjects();
-    }
-
-    private void setAdpater(){
-
-        ArrayList<CarsEntity> carsLists = new ArrayList<CarsEntity>();
-
-        carsRecyclerViewAdapter= new CarsRecyclerViewAdapter(getActivity(),carsLists);
-        recyclerView.setAdapter(carsRecyclerViewAdapter);
-    }
-
 
     public void onFresh(){
         Log.i("tc","enter count...");
@@ -77,25 +42,25 @@ public class CarsFragment extends BaseFragment {
             public void onSuccess(List<Trademark> list) {
 //                Log.d(TAG,"category=汽车 "+list.size());
 //                Log.d(TAG, "onSuccess: first one: "+list.get(0).getName());
-                ArrayList<CarsEntity> carsLists= new ArrayList<CarsEntity>();
+                ArrayList<BaseEntity> carsLists= new ArrayList<BaseEntity>();
                 for (Trademark tm:list){
-                    CarsEntity ce = new CarsEntity();
-                    ce.setName(tm.getName());
-                    ce.setCategory(tm.getCategory());
-                    ce.setLogo(tm.getLogo());
-                    ce.setShort_name(tm.getShort_name());
-                    ce.setUrl(tm.getUrl());
+                    BaseEntity be = new BaseEntity();
+                    be.setName(tm.getName());
+                    be.setCategory(tm.getCategory());
+                    be.setLogo(tm.getLogo());
+                    be.setShort_name(tm.getShort_name());
+                    be.setUrl(tm.getUrl());
+                    be.setInfo(tm.getInfo());
                     if(tm.getLogo_img()!=null) {
                         Log.d(TAG, "Url:" + tm.getLogo_img().getUrl());
-                        ce.setLogo_url(tm.getLogo_img().getUrl());
+                        be.setLogo_url(tm.getLogo_img().getUrl());
                     }
-                    carsLists.add(ce);
+                    carsLists.add(be);
 
                 }
 
-                carsRecyclerViewAdapter= new CarsRecyclerViewAdapter(getActivity(),carsLists);
-                recyclerView.setAdapter(carsRecyclerViewAdapter);
-
+                baseRecyclerViewAdapter= new BaseRecyclerViewAdapter(getActivity(),carsLists);
+                recyclerView.setAdapter(baseRecyclerViewAdapter);
 
             }
 
@@ -104,26 +69,6 @@ public class CarsFragment extends BaseFragment {
 
             }
         });
-
-    }
-
-    public void countObjects(){
-        Log.i("tc","enter count...");
-        BmobQuery<Trademark> bmobQuery = new BmobQuery<Trademark>();
-        bmobQuery.count(getActivity(),Trademark.class, new CountListener(){
-
-            @Override
-            public void onSuccess(int i) {
-
-                Log.d("tc","counts:"+i);
-            }
-
-            @Override
-            public void onFailure(int i, String s) {
-                Log.d("tc",s);
-            }
-        });
-
 
     }
 }

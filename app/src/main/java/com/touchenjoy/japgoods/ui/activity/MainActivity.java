@@ -106,15 +106,16 @@ public class MainActivity extends AppCompatActivity {
             public Fragment getItem(int position) {
                 switch (position) {
                     case 0:
-//                    return new ClothesFragment();
-                        return new CarsFragment();
+                    return new ClothesFragment();
+//                        return new CarsFragment();
                     case 1:
-//                        return new FoodsFragment();
-                        return new CarsFragment();
+                        return new FoodsFragment();
+//                        return new CarsFragment();
                     case 2:
-//                        return new ResideFragment();
-                        return new CarsFragment();
+                        return new ResideFragment();
+//                        return new CarsFragment();
                     case 3:
+                        return new CarsFragment();
                     default:
                         return new CarsFragment();
                 }

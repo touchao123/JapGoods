@@ -1,12 +1,34 @@
 package com.touchenjoy.japgoods.model.entities;
 
-import cn.bmob.v3.BmobObject;
-import cn.bmob.v3.datatype.BmobFile;
-
 /**
- * Created by Administrator on 2016/7/24.
+ * Created by Administrator on 2016/7/29.
  */
-public class Trademark extends BmobObject {
+public class BaseEntity {
+    private String name;
+    private String short_name;
+    private String logo;
+    private String url;
+    private String category;
+
+    public String getInfo() {
+        return info;
+    }
+
+    public void setInfo(String info) {
+        this.info = info;
+    }
+
+    private String info;
+
+    public String getLogo_url() {
+        return logo_url;
+    }
+
+    public void setLogo_url(String logo_url) {
+        this.logo_url = logo_url;
+    }
+
+    private String logo_url;
 
     public String getName() {
         return name;
@@ -47,31 +69,4 @@ public class Trademark extends BmobObject {
     public void setCategory(String category) {
         this.category = category;
     }
-
-    private String name;
-    private String short_name;
-    private String logo;
-    private String url;
-    private String category;
-    private String info;
-
-    public String getInfo() {
-        return info;
-    }
-
-    public void setInfo(String info) {
-        this.info = info;
-    }
-
-
-    public BmobFile getLogo_img() {
-        return logo_img;
-    }
-
-    public void setLogo_img(BmobFile logo_img) {
-        this.logo_img = logo_img;
-    }
-
-    private BmobFile logo_img;
-
 }
