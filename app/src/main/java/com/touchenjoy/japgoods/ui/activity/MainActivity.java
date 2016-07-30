@@ -24,6 +24,7 @@ import com.google.zxing.integration.android.IntentResult;
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnMenuTabClickListener;
 import com.touchenjoy.japgoods.R;
+import com.touchenjoy.japgoods.ui.fragment.AllGoodsFragment;
 import com.touchenjoy.japgoods.ui.fragment.CarsFragment;
 import com.touchenjoy.japgoods.ui.fragment.ClothesFragment;
 import com.touchenjoy.japgoods.ui.fragment.FoodsFragment;
@@ -99,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
             @Override
             public int getCount() {
-                return 4;
+                return 5;
             }
 
             @Override
@@ -116,6 +117,8 @@ public class MainActivity extends AppCompatActivity {
 //                        return new CarsFragment();
                     case 3:
                         return new CarsFragment();
+                    case 4:
+                        return new AllGoodsFragment();
                     default:
                         return new CarsFragment();
                 }
@@ -133,6 +136,8 @@ public class MainActivity extends AppCompatActivity {
                         return getString(R.string.reside);
                     case 3:
                         return getString(R.string.cars);
+                    case 4:
+                        return getString(R.string.allgoods);
                     default:
                         return getString(R.string.cars);
                 }
