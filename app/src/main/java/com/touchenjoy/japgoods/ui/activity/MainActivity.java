@@ -145,8 +145,8 @@ public class MainActivity extends AppCompatActivity {
         });
         tabLayout.setupWithViewPager(viewPager);
 
-        toolBar.setTitle("JapGoods");
-        toolBar.setSubtitle("search Goods");
+        toolBar.setTitle(R.string.app_name);
+        toolBar.setSubtitle(R.string.app_sub_title);
 //        toolBar.setLogo(R.drawable.btn_common);
 
 //        setSupportActionBar(toolBar);
@@ -157,7 +157,7 @@ public class MainActivity extends AppCompatActivity {
 //                Log.d(TAG,"navigation pressed");
                 IntentIntegrator integrator = new IntentIntegrator(MainActivity.this);
 //                integrator.setDesiredBarcodeFormats(IntentIntegrator.ONE_D_CODE_TYPES);
-                integrator.setPrompt("对准二维码");
+                integrator.setPrompt(getString(R.string.qr_prompt));
                 integrator.setCameraId(0);  // Use a specific camera of the device
                 integrator.setBeepEnabled(false);
                 integrator.setBarcodeImageEnabled(true);
@@ -181,9 +181,6 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case R.id.action_settings:
                     Log.i(TAG,"settings");
-                    break;
-                case R.id.action_share:
-                    Log.i(TAG,"action_share");
                     break;
                 default:
                     break;

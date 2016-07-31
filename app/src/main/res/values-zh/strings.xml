@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">日货通</string>
+    <string name="allgoods">所有</string>
+    <string name="cars">汽车</string>
+    <string name="foods">饮食</string>
+    <string name="reside">居住</string>
+    <string name="clothes">衣服</string>
+    <string name="tm_text_info">英菲尼迪是日产的高级汽车品牌</string>
+    <string name="dislike_dlg_lable_speech">读文章</string>
+    <string name="app_sub_title">日本商品浏览查看</string>
+    <string name="qr_prompt">对准二维码</string>
+</resources>
