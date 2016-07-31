@@ -69,14 +69,17 @@ public class MainActivity extends AppCompatActivity {
             public void onMenuTabSelected(@IdRes int menuItemId) {
 
                 switch (menuItemId){
-                    case R.id.bottomBarItemOne:
-                        Snackbar.make(coordinatorLayout, "bottomBarItemOne", 300).show();
+                    case R.id.bottomBarItemHome:
+                        Snackbar.make(coordinatorLayout, "bottomBarItemHome", 300).show();
                         break;
-                    case R.id.bottomBarItemTwo:
-                        Snackbar.make(coordinatorLayout, "bottomBarItemTwo", 300).show();
+                    case R.id.bottomBarItemForum:
+                        Snackbar.make(coordinatorLayout, "bottomBarItemForum", 300).show();
                         break;
-                    case R.id.bottomBarItemThree:
-                        Snackbar.make(coordinatorLayout, "bottomBarItemThree", 300).show();
+                    case R.id.bottomBarItemShop:
+                        Snackbar.make(coordinatorLayout, "bottomBarItemShop", 300).show();
+                        break;
+                    case R.id.bottomBarItemMe:
+                        Snackbar.make(coordinatorLayout, "bottomBarItemMe", 300).show();
                         break;
                 }
 
@@ -85,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onMenuTabReSelected(@IdRes int menuItemId) {
                 switch (menuItemId){
-                    case R.id.bottomBarItemOne:
+                    case R.id.bottomBarItemHome:
                         break;
                 }
             }

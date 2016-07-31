@@ -2,17 +2,22 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/bottomBarItemOne"
-        android:icon="@drawable/ic_crop_free_black_36dp"
-        android:title="One" />
+        android:id="@+id/bottomBarItemHome"
+        android:icon="@drawable/ic_home_black_36dp"
+        android:title="@string/bottom_item_home" />
 
     <item
-        android:id="@+id/bottomBarItemTwo"
-        android:icon="@drawable/ic_crop_free_black_36dp"
-        android:title="Two" />
+        android:id="@+id/bottomBarItemForum"
+        android:icon="@drawable/ic_forum_black_36dp"
+        android:title="@string/bottom_item_forum" />
 
     <item
-        android:id="@+id/bottomBarItemThree"
-        android:icon="@drawable/ic_crop_free_black_36dp"
-        android:title="Three" />
+        android:id="@+id/bottomBarItemShop"
+        android:icon="@drawable/ic_shopping_cart_black_36dp"
+        android:title="@string/bottom_item_shop" />
+
+    <item
+        android:id="@+id/bottomBarItemMe"
+        android:icon="@drawable/ic_perm_identity_black_36dp"
+        android:title="@string/bottom_item_me" />
 </menu>

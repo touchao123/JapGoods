@@ -10,4 +10,8 @@
     <string name="dislike_dlg_lable_speech">读文章</string>
     <string name="app_sub_title">日本商品浏览查看</string>
     <string name="qr_prompt">对准二维码</string>
+    <string name="bottom_item_forum">论坛</string>
+    <string name="bottom_item_home">主页</string>
+    <string name="bottom_item_me">我</string>
+    <string name="bottom_item_shop">商品</string>
 </resources>

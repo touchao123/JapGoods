@@ -13,4 +13,8 @@
     <string name="dislike_dlg_lable_speech">speech</string>
     <string name="app_sub_title">Japaness TradeMark</string>
     <string name="qr_prompt">QRCode</string>
+    <string name="bottom_item_home">home</string>
+    <string name="bottom_item_forum">forum</string>
+    <string name="bottom_item_shop">shop</string>
+    <string name="bottom_item_me">me</string>
 </resources>
